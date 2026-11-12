@@ -27,7 +27,8 @@ Live observations from running option A (release-please + release PR). One secti
 
 - Right after release-please opened #3, the PR showed 0 checks.
 - But two runs did exist on its head `4e35eea`, triggered by `github-actions[bot]` at 08:54:34Z: `ci` (43186821074) and `pr-title` (43186821102), each with 0 jobs. They turned to `failure` when the PR was closed.
-  - Likely cause, not confirmed: they were waiting for approval, since this public repo asks first-time contributors for approval, and the bot is one. To confirm on the next release-PR update.
+  - Confirmed on release PR #8 (2026-11-12): both bot-triggered runs ended `action_required`, meaning they wait for approval, likely because this public repo asks first-time contributors and the bot counts as one. Closing a PR turns its waiting runs into `failure`.
+  - `POST repos/{repo}/actions/runs/{id}/approve` on #8's `ci` run started it (attempt 2, `success`). On a public repo that's an alternative to close and reopen. Not tested on a private repo, where secure-fields lives.
 - Closed and reopened #3 with a personal token (`gh pr close` / `gh pr reopen`). New runs by `luca-gr4vy`: `ci`, `scan` and `pr-title` all `success`. The release jobs are skipped on PRs. Merge state `CLEAN`.
 
 ## A: first release, 0.1.0 (2026-11-12)
@@ -69,3 +70,15 @@ Live observations from running option A (release-please + release PR). One secti
   - The `fix:` in #5 would release if it counted, so `exclude-paths: ["packages/internal"]` dropped it. The `chore` never counts.
   - Even the first run (`d53821d`, the docs commit) already saw all three commits: release-please reads main's current HEAD through the API, not the run's own commit.
 - #6, titled `Update thing`: `pr-title` failed with `No release type found in pull request title "Update thing". Add a prefix to indicate what kind of release this pull request corresponds to.` Closed without merging.
+
+## A: race, a feat merged just before the release PR (2026-11-12)
+
+- Merged #7 `feat(core): add whisper`, which opened release PR #8 `chore(main): release 0.2.0`, listing only whisper.
+- Then merged #9 `feat(core): add echo` at 09:58:50Z and #8 at 09:58:53Z, 3 s apart. main: `86fa717` (#9), then `3502360` (#8).
+- #9's run (43196234730) ran first. Its release-please read main's HEAD, which already included #8, so it released #8: `✔ Creating 1 releases for pull #8`, tag `v0.2.0` on `3502360`. `decide`: `no v* tag at HEAD` (HEAD was `86fa717`), skip.
+- #8's run (43196242789): `decide` found `v0.2.0` at HEAD, and `release-stage` staged both packages at `0.2.0` and published the Release.
+- Result:
+  - The `0.2.0` tarball contains `echo`, from #9, because `packages/core/index.js` at `v0.2.0` has it.
+  - The `0.2.0` changelog and Release notes list only whisper. `echo` appears in no changelog.
+  - No new release PR: #9 sits before the release commit, so release-please never counts it again. If #9 had been a `feat!` (major), the bump would have been lost too.
+- Possible mitigations for the real repo, not tested: a "require branches to be up to date before merging" rule, or a merge queue on main. Either makes the release PR absorb #9 before it can merge.
