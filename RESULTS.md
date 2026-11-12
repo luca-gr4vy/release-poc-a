@@ -82,3 +82,7 @@ Live observations from running option A (release-please + release PR). One secti
   - The `0.2.0` changelog and Release notes list only whisper. `echo` appears in no changelog.
   - No new release PR: #9 sits before the release commit, so release-please never counts it again. If #9 had been a `feat!` (major), the bump would have been lost too.
 - Possible mitigations for the real repo, not tested: a "require branches to be up to date before merging" rule, or a merge queue on main. Either makes the release PR absorb #9 before it can merge.
+
+## A: 0.2.0 approved (2026-11-12)
+
+- The user approved the staged `0.2.0` after the race check. `npm view` dist-tags for core and react: `latest: 0.2.0`.
