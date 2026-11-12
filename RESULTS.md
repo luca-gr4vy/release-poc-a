@@ -61,3 +61,11 @@ Live observations from running option A (release-please + release PR). One secti
 
 - The user approved core, then react, on npmjs.com with 2FA.
 - `npm view @luca-gr4vy/release-poc-a-react@0.1.0 dependencies dist-tags` → `{"@luca-gr4vy/release-poc-a":"^0.1.0"}`, `latest: 0.1.0`. Core: `latest: 0.1.0`.
+
+## A: what doesn't release (2026-11-12)
+
+- Merged #4 `chore(core): tidy greet` (touches `packages/core/index.js`) and #5 `fix: correct internal flag` (touches only `packages/internal/index.js`). Each main run passed, and no release PR was opened.
+- release-please, in each of the three runs (`d53821d`, `f1623d8`, `35c7f70`): `✔ Splitting 3 commits by path`, `❯ commits: 2`, `✔ No user facing commits found since 80514f1… - skipping`.
+  - The `fix:` in #5 would release if it counted, so `exclude-paths: ["packages/internal"]` dropped it. The `chore` never counts.
+  - Even the first run (`d53821d`, the docs commit) already saw all three commits: release-please reads main's current HEAD through the API, not the run's own commit.
+- #6, titled `Update thing`: `pr-title` failed with `No release type found in pull request title "Update thing". Add a prefix to indicate what kind of release this pull request corresponds to.` Closed without merging.
