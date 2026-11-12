@@ -1,0 +1,23 @@
+{
+  "name": "@luca-gr4vy/release-poc-a-react",
+  "version": "0.0.0",
+  "description": "Throwaway release sandbox package. Do not use.",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "CHANGELOG.md"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luca-gr4vy/release-poc-a",
+    "directory": "packages/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@luca-gr4vy/release-poc-a": "workspace:^"
+  }
+}
