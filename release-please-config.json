@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    "packages": {
+      "release-type": "simple",
+      "changelog-path": "/CHANGELOG.md",
+      "include-component-in-tag": false,
+      "exclude-paths": ["packages/internal"],
+      "extra-files": [
+        { "type": "json", "path": "core/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "react/package.json", "jsonpath": "$.version" }
+      ],
+      "draft": true,
+      "force-tag-creation": true
+    }
+  }
+}

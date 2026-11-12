@@ -2,3 +2,6 @@ node_modules/
 dist/
 *.tgz
 release.json
+
+# The root CHANGELOG.md is copied in at pack time only.
+packages/*/CHANGELOG.md
