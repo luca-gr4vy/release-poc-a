@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.1.0...v0.2.0) (2026-11-12)
+
+
+### Features
+
+* **core:** add whisper ([#7](https://github.com/luca-gr4vy/release-poc-a/issues/7)) ([9da6a00](https://github.com/luca-gr4vy/release-poc-a/commit/9da6a00e9614e768a42abbec9c3d6bdd89bb7c0f))
+
 ## [0.1.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.0.0...v0.1.0) (2026-11-12)
 
 
