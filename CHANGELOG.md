@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.2.0...v0.3.0) (2026-11-16)
+
+
+### Features
+
+* **core:** remove shout ([#10](https://github.com/luca-gr4vy/release-poc-a/issues/10)) ([b8050bc](https://github.com/luca-gr4vy/release-poc-a/commit/b8050bcaeeb2480144a55fb57e2ecd367f4862ef))
+
 ## [0.2.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.1.0...v0.2.0) (2026-11-12)
 
 
