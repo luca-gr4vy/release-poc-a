@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.3.0...v0.4.0) (2026-11-23)
+
+
+### Features
+
+* **core:** update-branch test B ([#14](https://github.com/luca-gr4vy/release-poc-a/issues/14)) ([b1a015e](https://github.com/luca-gr4vy/release-poc-a/commit/b1a015e7f9adf122bfc6518d1b4f6648b32f5c77))
+
+
+### Bug Fixes
+
+* **core:** update-branch test A ([#12](https://github.com/luca-gr4vy/release-poc-a/issues/12)) ([bab99c7](https://github.com/luca-gr4vy/release-poc-a/commit/bab99c7c3f69d9782eeca9561950e9d2a285d80f))
+
 ## [0.3.0](https://github.com/luca-gr4vy/release-poc-a/compare/v0.2.0...v0.3.0) (2026-11-16)
 
 
